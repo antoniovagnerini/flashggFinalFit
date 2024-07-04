@@ -13,7 +13,7 @@ def get_options():
   parser.add_option("--outputExt", dest='outputExt', default='packaged', help="Output extension")
   parser.add_option("--massPoints", dest='massPoints', default='120,125,130', help="Comma separated list of mass points")
   parser.add_option("--mergeYears", dest='mergeYears', default=False, action="store_true", help="Merge specified categories across years")
-  parser.add_option("--year", dest="year", default="2016", help="If not merging, then specify year for output file name")
+  parser.add_option("--year", dest="year", default="2017", help="If not merging, then specify year for output file name")
   return parser.parse_args()
 (opt,args) = get_options()
 
@@ -37,6 +37,7 @@ packagedWS.imp = getattr(packagedWS,"import")
 data_merged = {}
 data_merged_names = []
 for mp in opt.massPoints.split(","): 
+  print(mp)
   data_merged["m%s"%mp] = ROOT.TFile(fNames[opt.exts.split(",")[0]][0]).Get("wsig_13TeV").data("sig_mass_m%s_%s"%(mp,opt.cat)).emptyClone("sig_mass_m%s_%s"%(mp,opt.cat))
   data_merged_names.append( data_merged["m%s"%mp].GetName() )
 

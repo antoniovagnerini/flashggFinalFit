@@ -4,7 +4,10 @@ Now the signal and background models and the datacard has been produced, it is t
 
 ## Copy everything across
 
-The very first step is to copy your signal and background models, and the `.txt` datacard to this directory. The signal and background models must match the specified paths in the `.txt` datacard (the default is `./Models/signal` and `./Models/background`, you can change this with the `--sigModelWSDir` and `--bkgModelWSDir` options in the `Datacard/RunYields.py` script) i.e.
+cp FA3_Interference_JHU_ggHSyst_rw_MengsMuV_HeshyXsec_ggHInt_ggHphase.py ../../HiggsAnalysis/CombinedLimit/python/
+
+The very first step is to copy your signal and background models, and the `.txt` datacard to this directory. I have not written a script for this yet so please do it by hand. The signal and background models must match the specified paths in the `.txt` datacard (the default is `./Models/signal` and `./Models/background`, you can change this with the `--sigModelWSDir` and `--bkgModelWSDir` options in the `Datacard/RunYields.py` script) i.e.
+
 ```
 mkdir Models
 mkdir Models/signal
@@ -124,4 +127,28 @@ Be careful: if you are running the observed impacts, the unblinded value of the 
 
 ## Bias studies
 
-Scripts/instructions for bias studies are in `Checks` folder.
+
+Step 01:
+source run_bias.sh -s bias-setup --year 2018
+Step 02:
+
+When step 01 is done you can run step 02
+
+source run_bias.sh -s bias-generate --year 2018
+
+Step 03: 
+Once steps 01 and 02 are done you can run steps 03
+
+source run_bias.sh -s bias-fixed --year 2018
+source run_bias.sh -s bias-envelope --year 2018
+
+you can run both of the above commands at the same time
+
+Step 04:
+
+Once steps 01,02 and 03 are done you can run steps 04 & 05
+
+
+source run_bias.sh -s bias-hadd --year 2018
+source run_bias.sh -s bias-plot --year 2018
+

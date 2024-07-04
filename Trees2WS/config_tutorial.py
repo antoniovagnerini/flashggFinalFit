@@ -1,3 +1,4 @@
+
 # Input config file for running trees2ws
 
 trees2wsCfg = {

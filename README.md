@@ -6,13 +6,15 @@ Welcome to the new Final Fits package. Here lies a a series of scripts which are
 
 You can follow the latest Final Fits tutorial [here](https://gitlab.cern.ch/jspah/higgsdna_finalfits_tutorial_24/-/tree/master). Slides from an older flashgg-based tutorial series can be found [here](https://indico.cern.ch/event/963619/contributions/4112177/attachments/2151275/3627204/finalfits_tutorial_201126.pdf)
 
-## Download and setup instructions
+## Download and setup instructions for Combine version 8
 
 ```
 export SCRAM_ARCH=el9_amd64_gcc12
 cmsrel CMSSW_14_1_0_pre4
 cd CMSSW_14_1_0_pre4/src
 cmsenv
+<<<<<<< HEAD
+
 
 COMBINE_TAG=07b56c67ba6e4304b42c3a6cdba710d59c719192
 COMBINEHARVESTER_TAG=94017ba5a3a657f7b88669b1a525b19d34ea41a2
@@ -34,10 +36,19 @@ scram b clean
 scram b -j 8
 
 # Install Final Fit package
-git clone -b $FINALFIT_TAG https://github.com/cms-analysis/flashggFinalFit.git
+git clone -b jhossain_hggAC git@github.com:jhosain/flashggFinalFit.git 
 cd flashggFinalFit/
+cmsenv
 source setup.sh
+
 ```
+## Copy Physics model in the CombinedLimit 
+```
+cd Combine
+cp FA3_Interference_JHU_ggHSyst_rw_MengsMuV_HeshyXsec_ggHInt_ggHphase.py ../../HiggsAnalysis/CombinedLimit/python/
+```
+
+
 
 ## Contents
 The Finals Fits package contains several subfolders which are used for the following steps:
