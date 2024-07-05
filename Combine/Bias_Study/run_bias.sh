@@ -41,27 +41,27 @@ if [[ $STEP == "t2w" ]]; then
 
 elif [[ $STEP == "bias-setup" ]]; then
 
-	python RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode setup 
+	python3 RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode setup 
 
 elif [[ $STEP == "bias-generate" ]]; then
 
-	python RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode generate 
+	python3 RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode generate 
 
 elif [[ $STEP == "bias-fixed" ]]; then
 
-	python RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode fixed
+	python3 RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode fixed
 
 elif [[ $STEP == "bias-envelope" ]]; then
 
-	python RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode envelope
+	python3 RunBiasInSignificance_ggh_AC.py --MH 125 --year ${YEAR} --mode envelope
 
 elif [[ $STEP == "bias-hadd" ]]; then
 
-        python RunBiasInSignificance_ggh_AC.py --MH 125 --mode hadd
+        python3 RunBiasInSignificance_ggh_AC.py --MH 125 --mode hadd
 
 elif [[ $STEP == "bias-plot" ]]; then
 
-	python SummaryBiasSignificance.py
+	python3 SummaryBiasSignificance.py
 
 else
     echo "Step $STEP is not one among t2w,bias-setup,bias-generate,bias-fixed,bias-envelope,bias-hadd,bias-plot. Exiting."

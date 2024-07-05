@@ -41,9 +41,9 @@ elif( opt.batch == 'SGE' )|( opt.batch == 'IC' )|( opt.batch == 'lxbatch' ):
   job_opts = "--job-mode %s %s"%(opt.batch,sub_opts)
 elif opt.batch == "local":
   job_opts = ""
-  print "--> Will print the commands to run combine without combineTool interactively\n\n"
+  print("--> Will print the commands to run combine without combineTool interactively\n\n")
 else:
-  print " --> [ERROR] Batch mode (%s) not supported. Leaving"%opt.batch
+  print(" --> [ERROR] Batch mode (%s) not supported. Leaving"%opt.batch)
   leave()
 
 
@@ -87,7 +87,7 @@ if opt.mode == "generate":
 
     for i_job in range(opt.nJobs):
 
-        cmd = "python combineTool.py --task-name do_gen_%g -m %s -d higgsCombine_initial_%s.MultiDimFit.mH%s.root -M GenerateOnly --setParameters MH=%s,mu_ggH=1,muV=1,fa3_ggH=0,fa3=0 --freezeParameters MH,muV,mu_ggH,fa3,fa3_ggH -n _toy_%g --saveToys --snapshotName MultiDimFit -t %s -s -1"%(i_job,opt.MH,opt.year,opt.MH,opt.MH,i_job,opt.nToys)
+        cmd = "python3 combineTool.py --task-name do_gen_%g -m %s -d higgsCombine_initial_%s.MultiDimFit.mH%s.root -M GenerateOnly --setParameters MH=%s,mu_ggH=1,muV=1,fa3_ggH=0,fa3=0 --freezeParameters MH,muV,mu_ggH,fa3,fa3_ggH -n _toy_%g --saveToys --snapshotName MultiDimFit -t %s -s -1"%(i_job,opt.MH,opt.year,opt.MH,opt.MH,i_job,opt.nToys)
         
         cmd += " %s;"%job_opts
        
@@ -123,7 +123,7 @@ if opt.mode == "fixed":
     
     for i_job in range( opt.nJobs ):
 
-        cmd = "python combineTool.py --task-name do_fixed_%g -m %s -d higgsCombine_initial_%s.MultiDimFit.mH%s.root -M Significance --snapshotName MultiDimFit --cminDefaultMinimizerStrategy 0 --setParameters MH=%s,%s,mu_ggH=1,muV=1,fa3_ggH=0,fa3=0 --freezeParameters MH,%s,mu_ggH,muV,fa3_ggH,fa3 -n _fixed_%g --setParameterRanges muV=0,5:mu_ggH=0,5:fa3_ggH=-1,1:fa3=-1,1 -t %s --toysFile toys/toy_%g.root --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2 --X-rtd ADDNLL_RECURSIVE=1"%(i_job,opt.MH,opt.year,opt.MH,opt.MH,pdf_index_set,pdf_index_freeze,i_job,opt.nToys,i_job)
+        cmd = "python3 combineTool.py --task-name do_fixed_%g -m %s -d higgsCombine_initial_%s.MultiDimFit.mH%s.root -M Significance --snapshotName MultiDimFit --cminDefaultMinimizerStrategy 0 --setParameters MH=%s,%s,mu_ggH=1,muV=1,fa3_ggH=0,fa3=0 --freezeParameters MH,%s,mu_ggH,muV,fa3_ggH,fa3 -n _fixed_%g --setParameterRanges muV=0,5:mu_ggH=0,5:fa3_ggH=-1,1:fa3=-1,1 -t %s --toysFile toys/toy_%g.root --X-rtd MINIMIZER_freezeDisassociatedParams --X-rtd MINIMIZER_multiMin_hideConstants --X-rtd MINIMIZER_multiMin_maskConstraints --X-rtd MINIMIZER_multiMin_maskChannels=2 --X-rtd ADDNLL_RECURSIVE=1"%(i_job,opt.MH,opt.year,opt.MH,opt.MH,pdf_index_set,pdf_index_freeze,i_job,opt.nToys,i_job)
         
         cmd += " %s;\n"%job_opts      
         print(cmd)
@@ -148,7 +148,7 @@ if opt.mode == "envelope":
   
     for i_job in range( opt.nJobs ):
 
-        cmd = "python combineTool.py --task-name do_env_%g -m %s -d higgsCombine_initial_%s.MultiDimFit.mH%s.root -M Significance --snapshotName MultiDimFit --cminDefaultMinimizerStrategy 0 --setParameters MH=%s,mu_ggH=1,muV=1,fa3_ggH=0,fa3=0 --freezeParameters MH,mu_ggH,muV,fa3_ggH,fa3 -n _envelope_%g --setParameterRanges muV=0,5:mu_ggH=0,5:fa3_ggH=-1,1:fa3=-1,1 -t %s --toysFile toys/toy_%g.root --X-rtd MINIMIZER_analytic"%(i_job,opt.MH,opt.year,opt.MH,opt.MH,i_job,opt.nToys,i_job)
+        cmd = "python3 combineTool.py --task-name do_env_%g -m %s -d higgsCombine_initial_%s.MultiDimFit.mH%s.root -M Significance --snapshotName MultiDimFit --cminDefaultMinimizerStrategy 0 --setParameters MH=%s,mu_ggH=1,muV=1,fa3_ggH=0,fa3=0 --freezeParameters MH,mu_ggH,muV,fa3_ggH,fa3 -n _envelope_%g --setParameterRanges muV=0,5:mu_ggH=0,5:fa3_ggH=-1,1:fa3=-1,1 -t %s --toysFile toys/toy_%g.root --X-rtd MINIMIZER_analytic"%(i_job,opt.MH,opt.year,opt.MH,opt.MH,i_job,opt.nToys,i_job)
         
         cmd += " %s;\n"%job_opts
         print(cmd)
