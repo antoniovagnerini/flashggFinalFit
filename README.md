@@ -13,7 +13,6 @@ export SCRAM_ARCH=el9_amd64_gcc12
 cmsrel CMSSW_14_1_0_pre4
 cd CMSSW_14_1_0_pre4/src
 cmsenv
-<<<<<<< HEAD
 
 
 COMBINE_TAG=07b56c67ba6e4304b42c3a6cdba710d59c719192
@@ -36,7 +35,7 @@ scram b clean
 scram b -j 8
 
 # Install Final Fit package
-git clone -b jhossain_hggAC git@github.com:jhosain/flashggFinalFit.git 
+git clone -b cms-analysis-dev_fggfinalfits_lite  https://github.com/antoniovagnerini/flashggFinalFit.git 
 cd flashggFinalFit/
 cmsenv
 source setup.sh
