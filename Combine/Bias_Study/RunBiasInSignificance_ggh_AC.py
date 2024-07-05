@@ -117,9 +117,12 @@ if opt.mode == "fixed":
 
     for i_job in range( opt.nJobs ):
 
-        cmd = "mv higgsCombine_toy_%g.* toys/toy_%g.root; \n"%(i_job,i_job)
-        cmd = "mv do_gen_%g* jobs_toys/ ; mv condor_do_gen_%g* jobs_toys/ "%(i_job,i_job)
+        cmd = "mv higgsCombine_toy_%g* toys/toy_%g.root; \n"%(i_job,i_job)
+        print(cmd)
+        cmd2 = "mv do_gen_%g* jobs_toys/ ; mv condor_do_gen_%g* jobs_toys/ "%(i_job,i_job)
+        print(cmd2)
         os.system(cmd)
+        os.system(cmd2)
     
     for i_job in range( opt.nJobs ):
 
